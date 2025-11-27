@@ -1,11 +1,11 @@
 import cv2
 from ultralytics import YOLO
 
-# Load YOLO model
+
 model = YOLO("yolov8n.pt")
 
-# Load video file
-video_path = "football.mp4"   # change this to your video name
+
+video_path = "football.mp4"   
 cap = cv2.VideoCapture(video_path)
 
 while True:
@@ -13,7 +13,7 @@ while True:
     if not ret:
         break
 
-    # Run YOLO on the frame
+   
     results = model(frame, stream=True)
 
     human_count = 0
@@ -21,7 +21,7 @@ while True:
     for result in results:
         for box in result.boxes:
             cls = int(box.cls[0])
-            if cls == 0:  # YOLO Class 0 = Person
+            if cls == 0: 
                 human_count += 1
 
                 x1, y1, x2, y2 = map(int, box.xyxy[0])
