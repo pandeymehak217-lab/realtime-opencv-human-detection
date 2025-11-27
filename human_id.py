@@ -19,9 +19,9 @@ while True:
 
     for box in results.boxes:
         cls = int(box.cls[0])
-        if cls == 0:  # person
+        if cls == 0:  
             x1, y1, x2, y2 = map(int, box.xyxy[0])
-            detections.append([x1, y1, x2, y2, 0.9])  # dummy conf
+            detections.append([x1, y1, x2, y2, 0.9])  
 
     dets_np = np.array(detections)
 
